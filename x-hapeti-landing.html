@@ -1,0 +1,318 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../app-layout/app-header/app-header.html">
+<link rel="import" href="../app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="myicon-icons.html">
+<dom-module id="x-hapeti-landing">
+
+  <template>
+
+    <style>
+
+    :host {
+       --iron-icon-width: 40px;
+       --iron-icon-height: 40px;
+       --scroll-button-size: 24px;
+       --scroll-button-color: ;
+       --video-height: 100%;
+       --video-width: 100%;
+       --paper-listbox-background-color: #fff;
+       --iron-overlay-backdrop-opacity: 0.1;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: inherit;
+        color: inherit;
+      }
+
+      .toolbar {
+        @apply --layout-horizontal;
+        @apply --layout-end-justified;
+        background-color: rgba(255, 255, 255, 0.95);
+      }
+
+      .tabs {
+        height: 100%;
+        @apply --layout-horizontal;
+      }
+
+      .tabs > a {
+        @apply --layout-vertical;
+        @apply --layout-center-center;
+        margin: 12px 16px 12px;
+        border-bottom: 1px solid #222;
+      }
+
+      header {
+        @apply --layout-vertical;
+        @apply --layout-center-center;
+        height: calc(100vh - 64px);
+        padding: 0 16px;
+        /* background-image: url('//app-layout-assets.appspot.com/assets/landing-page/glass_explorer_food_2.png'); */
+        background-image: url('./images/Hapeti-0-40.jpg');
+        backgrond-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        text-align: center;
+      }
+
+      header > h2 {
+        font-size: 56px;
+        font-weight: 300;
+        margin: 0;
+      }
+
+      header > p {
+        font-size: 32px;
+      }
+
+      section {
+        padding: 88px 16px;
+      }
+
+      .container {
+        @apply --layout-horizontal;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .container > * {
+        @apply --layout-flex;
+      }
+
+      .container img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .container h3, .container1 h3 {
+        font-size: 32px;
+        font-weight: 300;
+        margin: 24px 0;
+      }
+
+      .container p, .container1 p {
+        line-height: 1.5;
+      }
+
+      .container1 {
+         /*  @apply --layout-vertical; */
+         display: block;
+         margin: 3.5em 0;
+      }
+
+      div {
+        margin: 0 1em;
+      }
+
+      .show {
+        display: block;
+      }
+
+      .hiden {
+        display: none;
+      }
+
+      /* FOOTER CSS styles */
+
+      .footer-media-links {
+        background:#e8345a;
+        padding:20px;
+        @apply --layout-horizontal ;
+        @apply --layout-center-justified ;
+        }
+
+      .footer-media-links a {
+        color:black;
+        display:inline-block;
+        padding:3px 20px;f
+        ont-size:13px;font-weight:500;
+        text-shadow:none;
+        text-decoration:none;
+        text-align:center;
+        min-width:100px;
+        white-space:nowrap;
+      }
+
+      .footer-media-links a span {
+        line-height:24px;
+        margin-left:5px;
+      }
+
+      .footer-links {
+        background:#263238;
+        padding:30px 10px;
+      }
+
+      .footer-links > * {
+        margin:10px;
+      }
+
+      .footer-links .title {
+        font-family:'Roboto Slab', 'Roboto', 'Noto', sans-serif;
+        color:white;
+        border-top:1px solid #707375;
+        padding-top:10px;
+        font-size:13px;
+      }
+
+      .footer-links a {
+        text-decoration:none;
+        color:#979797;
+        display:block;
+        font-size:11px;
+        line-height:20px;
+      }
+
+
+      @media (max-width: 760px) {
+
+        .show {
+          display: none;
+        }
+
+        .hiden {
+          display: block;
+        }
+        .container {
+          @apply --layout-vertical;
+        }
+
+        div {
+          margin: 0 ;
+        }
+
+        .container img {
+          margin: 1em calc((100% - 480px)/2);
+        }
+
+        .footer-media-links a {
+          padding:3px 5px;
+          font-size:12px;
+        }
+
+        .footer-media-links a span {
+          line-height:12px;
+          margin-left:5px;
+        }
+
+        .footer-links {
+          background:#263238;
+          padding:10px 5px;
+        }
+      }
+
+    </style>
+
+    <app-header-layout>
+
+      <app-header reveals effects="waterfall" slot="header">
+
+        <app-toolbar class="toolbar">
+          <div class="tabs">
+            <a href="#product">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </app-toolbar>
+
+      </app-header>
+
+      <header>
+        <h2>Welcome To Hapeti.com</h2>
+        <p>Stay tuned</p>
+      </header>
+
+      <section id="product">
+        <div class="container">
+          <div>
+            <h3>Products</h3>
+            <img src="./images/Hapeti-1-40.jpg">
+          </div>
+          <div class="container1">
+            <div>
+              <h3>Exotic</h3>
+              <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</p>
+            </div>
+            <div>
+              <h3>Provence</h3>
+              <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</p>
+            </div>
+            <div>
+              <h3>Curry</h3>
+              <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</p>
+            </div>
+         </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="hiden">
+            <h3>About us</h3>
+            <img src="./images/Hapeti-2-30.jpg">
+          </div>
+          <div>
+            <h3 class="show">About us</h3>
+            <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</p>
+            <p>Convenire definiebas scriptorem eu cum. Sit dolor dicunt consectetuer no. Convenire definiebas scriptorem eu cum. Sit dolor dicunt consectetuer no.</p>
+          </div>
+          <div class="show">
+            <img src="./images/Hapeti-2-30.jpg">
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="footer-media-links">
+          <a href="#" title="Follow us on Google+" arial-label="Follow us on Google+">
+            <iron-icon icon="myicon:gplus"><iron-icon>
+            <span> Hapeti store</span>
+          </a>
+          <a href="#" title="Follow us on Twitter" arial-label="Follow us on Twitter">
+            <iron-icon icon="myicon:twitter"><iron-icon>
+            <span> @hapeti-store</span>
+          </a>
+          <a href="https://www.facebook.com/Hapeti-store-147052812585333"  title="Follow us on FaceBook" arial-label="Follow us on FaceBook">
+            <iron-icon icon="myicon:facebook"><iron-icon>
+            <span> Hapeti-store</span>
+          </a>
+          <a href="mailto:hapeti.store@gmail.com?subject=order&cc=khuatthuha@gmail.com" title="To order email us" arial-label="Email us">
+            <iron-icon icon="myicon:gmail"><iron-icon>
+            <span> Hapeti-store</span>
+          </a>
+        </div>
+      </section>
+
+    </app-header-layout>
+
+  </template>
+
+  <script>
+    class XHapetiLanding extends Polymer.Element {
+      static get is() {
+        return 'x-hapeti-landing';
+      }
+    }
+    customElements.define(XHapetiLanding.is, XHapetiLanding);
+  </script>
+
+</dom-module>
